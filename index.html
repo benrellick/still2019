@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>It's still 2019</title>
+		<!-- Mobile Specific Metas -->
+
+	    <!-- MOBILE: viewport stuff -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+		<!-- iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-touch-fullscreen" content="yes">
+		
+	    <!-- webfonts -->
+		<link href="https://fonts.googleapis.com/css?family=Gelasio:400,700&display=swap" rel="stylesheet">
+
+		<style>
+			html {
+				background: #f7f7f7;
+				font-family: Gelasio, Avenir, sans-serif;
+				color: #222;
+				transition: background 2s;
+			}
+			#intro, #main, #ordinal {
+				opacity: 0;
+				transition: all 2s;
+			}
+			h2, h3 {
+				font-weight: normal;
+			}
+			.wrap {
+				margin: 10%;
+			}
+		</style>
+
+		<script>
+
+			var callback = function(){
+			  
+				const nth = function(d) {
+				  if (d > 3 && d < 21) return 'th';
+				  switch (d % 10) {
+				    case 1:  return "st";
+				    case 2:  return "nd";
+				    case 3:  return "rd";
+				    default: return "th";
+				  }
+				}
+
+				function daysSince(date) {
+				  var seconds = Math.floor((new Date() - date) / 1000);
+				  var interval = Math.floor(seconds / 31536000);
+				  interval = Math.floor(seconds / 86400);
+				  if (interval > 1) {
+				    return interval;
+				  }
+				  return Math.floor(seconds) + " seconds";
+				}
+
+				let allDays = daysSince(new Date("2019-01-01 GMT-0500"));
+				let dayOrdinal = nth(allDays);
+
+				let decDay = new Date().getDate() + 31;
+
+				document.getElementById("decDay").innerHTML = decDay;
+				document.getElementById("allDaysOrdinal").innerHTML = allDays + dayOrdinal;
+
+				function loadingFadeIn(id, ms){
+					setTimeout(function(){
+						document.getElementById(id).style.opacity = "1";
+					}, ms);
+				}
+
+				loadingFadeIn(intro, 1000);
+				loadingFadeIn(main, 3000);
+				loadingFadeIn(ordinal, 5000);
+
+			}; // End
+
+			if (
+			    document.readyState === "complete" ||
+			    (document.readyState !== "loading" && !document.documentElement.doScroll)
+			) {
+			  callback();
+			} else {
+			  document.addEventListener("DOMContentLoaded", callback);
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+		<div class="wrap">
+
+			<h3 id="intro">Oh God. Today is...</h3>
+			<h1 id="main">Decemeber <span id="decDay"></span>, 2019</h1>
+
+			<h2 id="ordinal">The <span id="allDaysOrdinal"></span> day of 2019</h2>
+
+		</div><!-- end wrap -->
+
+	</body>
+
+</html>
