@@ -75,7 +75,7 @@
 				  return Math.floor(seconds) + " seconds";
 				}
 
-				let allDays = daysSince(new Date("2019-01-01 GMT-0500"));
+				let allDays = daysSince(new Date("2019-01-01 00:00:00"));
 				let dayOrdinal = nth(allDays);
 
 				let decDay = new Date().getDate() + 31;
@@ -112,7 +112,7 @@
 		<div class="wrap">
 
 			<h3 id="intro">Oh God. Today is...</h3>
-			<h1 id="main">Decemeber <span id="decDay"></span>, 2019</h1>
+			<h1 id="main">December <span id="decDay"></span>, 2019</h1>
 
 			<h2 id="ordinal">The <span id="ordinal__value"></span> day of 2019</h2>
 
