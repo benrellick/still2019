@@ -24,9 +24,6 @@
 			html {
 				font-family: Gelasio, Avenir, sans-serif;
 				color: #222;
-				-webkit-transition: background 2s;
-				transition: background 2s;
-				-webkit-transform: translateZ(0); /* iPhone Chrome animation bug fix */
 			}
 			#intro {
 				color: #888;
@@ -45,7 +42,6 @@
 				opacity: 0;
 				-webkit-transition: all 2s;
 				transition: all 2s;
-				-webkit-transform: translateZ(0); /* iPhone Chrome animation bug fix */
 			}
 			h2, h3 {
 				font-weight: normal;
@@ -90,9 +86,23 @@
 				document.getElementById("decDay").innerHTML = decDay;
 				document.getElementById("ordinal__value").innerHTML = allDays + dayOrdinal;
 
+				function fadeIn(el, display){
+					el.style.opacity = 0;
+					el.style.display = display || "block";
+
+					(function fade() {
+					var val = parseFloat(el.style.opacity);
+					if (!((val += .1) > 1)) {
+					  el.style.opacity = val;
+					  requestAnimationFrame(fade);
+					}
+					})();
+				};
+
 				function loadingFadeIn(id, ms){
 					setTimeout(function(){
-						document.getElementById(id).classList.add('visible');
+						let element = document.getElementById(id);
+						fadeIn(element)
 					}, ms);
 				}
 
