@@ -80,9 +80,12 @@
 				  return Math.floor(seconds) + " seconds";
 				}
 
-				var dateTest = new Date("2019-01-01 00:00:00");
+				// 2019-01-01 00:00:00
+				// mm/dd/yyyy hh:mm:ss
+
+				var dateTest = new Date("01/01/2019 00:00:00");
 				alert(dateTest);
-				let allDays = daysSince(new Date("2019-01-01 00:00:00"));
+				let allDays = daysSince(new Date("01/01/2019 00:00:00"));
 				let dayOrdinal = nth(allDays);
 
 				let decDay = new Date().getDate() + 31;
