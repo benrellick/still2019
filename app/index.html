@@ -51,6 +51,9 @@
 			.wrap {
 				margin: 200px 10% 10%;
 			}
+			.visible {
+				opacity: 1 !important;
+			}
 		</style>
 
 		<script>
@@ -69,22 +72,14 @@
 
 				function daysSince(date) {
 				  var seconds = Math.floor((new Date() - date) / 1000);
-				  alert(seconds);
 				  var interval = Math.floor(seconds / 31536000);
-				  alert(interval)
 				  interval = Math.floor(seconds / 86400);
-				  alert(interval)
 				  if (interval > 1) {
 				    return interval;
 				  }
 				  return Math.floor(seconds) + " seconds";
 				}
 
-				// 2019-01-01 00:00:00
-				// mm/dd/yyyy hh:mm:ss
-
-				var dateTest = new Date("01/01/2019 00:00:00");
-				alert(dateTest);
 				let allDays = daysSince(new Date("01/01/2019 00:00:00"));
 				let dayOrdinal = nth(allDays);
 
@@ -95,7 +90,7 @@
 
 				function loadingFadeIn(id, ms){
 					setTimeout(function(){
-						document.getElementById(id).style.opacity = "1";
+						document.getElementById(id).classList.add('visible');
 					}, ms);
 				}
 
