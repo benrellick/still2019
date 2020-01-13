@@ -24,6 +24,7 @@
 			html {
 				font-family: Gelasio, Avenir, sans-serif;
 				color: #222;
+				-webkit-transition: background 2s;
 				transition: background 2s;
 			}
 			#intro {
@@ -41,6 +42,7 @@
 			}
 			#intro, #main, #ordinal {
 				opacity: 0;
+				-webkit-transition: all 2s;
 				transition: all 2s;
 			}
 			h2, h3 {
@@ -67,14 +69,19 @@
 
 				function daysSince(date) {
 				  var seconds = Math.floor((new Date() - date) / 1000);
+				  alert(seconds);
 				  var interval = Math.floor(seconds / 31536000);
+				  alert(interval)
 				  interval = Math.floor(seconds / 86400);
+				  alert(interval)
 				  if (interval > 1) {
 				    return interval;
 				  }
 				  return Math.floor(seconds) + " seconds";
 				}
 
+				var dateTest = new Date("2019-01-01 00:00:00");
+				alert(dateTest);
 				let allDays = daysSince(new Date("2019-01-01 00:00:00"));
 				let dayOrdinal = nth(allDays);
 
