@@ -81,7 +81,8 @@
 				let allDays = daysSince(new Date("01/01/2019 00:00:00"));
 				let dayOrdinal = nth(allDays);
 
-				let decDay = new Date().getDate() + 31;
+				// let decDay = new Date().getDate() + 31;
+				let decDay = daysSince(new Date("01/01/2020 00:00:00")) + 31;
 
 				document.getElementById("decDay").innerHTML = decDay;
 				document.getElementById("ordinal__value").innerHTML = allDays + dayOrdinal;
